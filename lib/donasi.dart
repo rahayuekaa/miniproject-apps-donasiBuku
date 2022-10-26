@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Donasi extends StatefulWidget {
   const Donasi({super.key});
@@ -8,8 +10,20 @@ class Donasi extends StatefulWidget {
 }
 
 class _DonasiState extends State<Donasi> {
+
+Future<void> _launchURL(String url) async {
+  final Uri uri = Uri(scheme: 'https', host: url);
+  if(!await launchUrl(
+    uri,
+  )) {
+    throw "can not launch url";
+  }
+}
+
   @override
   Widget build(BuildContext context) {
+    
+   
     return Scaffold(
       body: content(),
     );
@@ -19,14 +33,15 @@ class _DonasiState extends State<Donasi> {
       children: [
         Center(
           child: Container(
-            height: 350,
+            height: 330,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.blueAccent,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: Image.asset('assets/logo4.png',
-            width: 50,
+            child: Image.asset('assets/logo5.png',
+            width: 10,
+
             ),
           ),
         ),
@@ -53,10 +68,15 @@ class _DonasiState extends State<Donasi> {
                   borderRadius: BorderRadius.circular(20)),
               height: 90,
               width: 145,
-              child: Icon(
-                Icons.location_pin,
-                size: 45,
-                color: Colors.white,
+              child: GestureDetector(
+                onTap: () {
+                  _launchURL("maps.google.com");
+                },
+                child: Icon(
+                  Icons.location_pin,
+                  size: 45,
+                  color: Colors.white,
+                ),
               ),
             ),
             SizedBox(
@@ -68,10 +88,22 @@ class _DonasiState extends State<Donasi> {
                   borderRadius: BorderRadius.circular(20)),
               height: 90,
               width: 145,
-              child: Icon(
-                Icons.phone,
-                size: 45,
-                color: Colors.white,
+              child: GestureDetector(
+                onTap: () {
+                final Uri emailLaunchUri = Uri(
+                scheme: 'mailto',
+                path: 'bagibukuofficial@gmail.com',
+                query: encodeQueryParameters(<String, String>{
+                'subject': 'Example Subject & Symbols are allowed!',
+              }),
+              );
+                launchUrl(emailLaunchUri);
+                },
+                child: Icon(
+                  Icons.email_sharp,
+                  size: 45,
+                  color: Colors.white,
+                ),
               ),
             ),
           ],
@@ -107,9 +139,14 @@ class _DonasiState extends State<Donasi> {
             ),
             Padding(
               padding: const EdgeInsets.only(),
-              child: Text(
-                'Jalan Gunung Anyar   \n Surabaya',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+              child: GestureDetector(
+                onTap: () {
+                  _launchURL("maps.google.com");
+                },
+                child: Text(
+                  'Jalan Gunung Anyar   \n Surabaya',
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                ),
               ),
             ),
             IconButton(
@@ -124,6 +161,7 @@ class _DonasiState extends State<Donasi> {
             ),
           ],
         ),
+        
         SizedBox(height: 20,),
         Padding(
           padding: const EdgeInsets.only(right: 160),
@@ -152,9 +190,14 @@ class _DonasiState extends State<Donasi> {
             ),
             Padding(
               padding: const EdgeInsets.only(),
-              child: Text(
-                'Jalan Rungkut Madya\n Surabaya',
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+              child: GestureDetector(
+                onTap: (){
+                  _launchURL("maps.google.com");
+                },
+                child: Text(
+                  'Jalan Rungkut Madya\n Surabaya',
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                ),
               ),
             ),
             IconButton(
@@ -169,7 +212,7 @@ class _DonasiState extends State<Donasi> {
             ),
           ],
         ),
-        SizedBox(height: 38,),
+        SizedBox(height: 45,),
         Container(
           height: 50,
           width: 340,
@@ -179,15 +222,18 @@ class _DonasiState extends State<Donasi> {
           ),
           child: TextButton(
             onPressed: () {
-              Navigator.of(context).pushNamed('');
+              Navigator.of(context).pushNamed('/done');
             },
             child: Text(
               'Donasi',
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ),
       ],
     );
   }
+}
+
+encodeQueryParameters(Map<String, String> map) {
 }

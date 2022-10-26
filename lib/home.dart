@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -12,6 +11,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -28,26 +28,38 @@ class _HomeState extends State<Home> {
                 Row(
                   children: [
                     Text(
-                      'Hi, Rahayu\nWelcome to MyApp',
+                      'Selamat Datang,',
                       style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
                           color: Colors.blueAccent),
                     ),
                     Spacer(),
-                    Image.asset(
-                      'assets/user.png',
-                      height: 40,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/profile');
+                      },
+                      child: Image.asset(
+                        'assets/user.png',
+                        height: 40,
+                      ),
                     ),
                   ],
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 147),
+                  child: Text(
+                    'Awali harimu dengan berbagi',
+                    style: TextStyle(fontSize: 15, color: Colors.blueAccent),
+                  ),
+                ),
                 SizedBox(
-                  height: 30,
+                  height: 25,
                 ),
                 Stack(
                   children: [
                     Container(
-                      height: 200,
+                      height: 180,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(12)),
                           color: Colors.blueAccent,
@@ -83,13 +95,15 @@ class _HomeState extends State<Home> {
                                       fontSize: 13, color: Colors.white),
                                 ),
                                 SizedBox(
-                                  height: 30,
+                                  height: 17,
                                 ),
                                 FloatingActionButton.extended(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.of(context).pushNamed('');
+                                  },
                                   backgroundColor: Colors.white,
                                   label: Text(
-                                    'More info',
+                                    'Selengkapnya',
                                     style: TextStyle(
                                         color: Colors.blueAccent,
                                         fontWeight: FontWeight.w700),
@@ -108,13 +122,18 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 155),
-                  child: Text('Pilih kategori buku', style: TextStyle(fontSize: 20),),
+                  child: Text(
+                    'Pilih kategori buku',
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 Row(
                   children: [
@@ -130,17 +149,21 @@ class _HomeState extends State<Home> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(),
-                      child: 
-                      Text(
-                        'Buku Novel',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/donasi');
+                        },
+                        child: Text(
+                          'Buku Novel',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {Navigator.of(context).pushNamed('/donasi');},
+                      onPressed: () {},
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 140.0),
                         child: Icon(
@@ -168,16 +191,21 @@ class _HomeState extends State<Home> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(),
-                      child: Text(
-                        'Buku Komik',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/donasi');
+                        },
+                        child: Text(
+                          'Buku Komik',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {Navigator.of(context).pushNamed('/donasi');},
+                      onPressed: () {},
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 135.0),
                         child: Icon(
@@ -205,16 +233,21 @@ class _HomeState extends State<Home> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(),
-                      child: Text(
-                        'Buku Ensiklopedia',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/donasi');
+                        },
+                        child: Text(
+                          'Buku Ensiklopedia',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {Navigator.of(context).pushNamed('/donasi');},
+                      onPressed: () {},
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 90.0),
                         child: Icon(
@@ -242,18 +275,63 @@ class _HomeState extends State<Home> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(),
-                      child: Text(
-                        'Buku Ilmiah',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/donasi');
+                        },
+                        child: Text(
+                          'Buku Ilmiah',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     IconButton(
-                      onPressed: () {Navigator.of(context).pushNamed('/donasi');},
+                      onPressed: () {},
                       icon: Padding(
                         padding: const EdgeInsets.only(left: 135.0),
+                        child: Icon(
+                          Icons.chevron_right,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15,),
+                 Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Image.asset(
+                        'assets/buku5.png',
+                        width: 50,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/donasi');
+                        },
+                        child: Text(
+                          'Buku Karya Sastra',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.blueAccent,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Padding(
+                        padding: const EdgeInsets.only(left: 88.0),
                         child: Icon(
                           Icons.chevron_right,
                           color: Colors.grey,
